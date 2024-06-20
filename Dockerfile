@@ -1,54 +1,3 @@
-# # Start with the official Node.js image
-# FROM node:18-alpine as base
-# RUN apk add --no-cache g++ make py3-pip libc6-compat
-# WORKDIR /app
-# COPY package.json pnpm-lock.yaml ./
-# RUN npm install -g pnpm
-# EXPOSE 3000
-
-# # FROM base as builder
-# # WORKDIR /app
-# # COPY . .
-# # RUN pnpm run build
-
-# # FROM base as production
-# # WORKDIR /app
-
-# # ENV NODE_ENV=production
-# # RUN pnpm ci
-
-# # RUN addgroup -g 1001 -S nodejs
-# # RUN adduser -S nextjs -u 1001
-# # USER nextjs
-
-# # COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-# # COPY --from=builder /app/node_modules ./node_modules
-# # COPY --from=builder /app/package.json ./package.json
-# # COPY --from=builder /app/public ./public
-
-# # CMD pnpm start
-
-# FROM base as dev
-# ENV NODE_ENV=dev
-# RUN pnpm install 
-# COPY . .
-# CMD pnpm run dev
-
-# # # Copy the rest of your app's source code
-# # COPY . /app
-
-# # # Install dependencies
-# # RUN npm install -g pnpm && pnpm install --frozen-lockfile
-
-# # # Build the app
-# # # RUN pnpm run build
-
-# # # Expose the port your app runs on
-# # EXPOSE 3000
-
-# # # Start the app
-# # CMD ["pnpm", "run", "dev"]
-
 FROM node:18-alpine AS base
 
 # Install dependencies only when needed
@@ -66,12 +15,15 @@ RUN \
     else echo "Lockfile not found." && exit 1; \
     fi
 
-
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
+# Prisma client
+COPY prisma ./prisma
+RUN npx prisma generate
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
@@ -93,8 +45,6 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
-
-
 
 COPY --from=builder /app/public ./public
 
