@@ -40,18 +40,19 @@ export default async function HeroLanding() {
         </Link>
 
         <h1 className="text-balance font-urban text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-[66px]">
-          Kick off with a bang with{" "}
+          Learn {" "}
           <span className="text-gradient_indigo-purple font-extrabold">
-            Wisp!
+            Smarter
           </span>
+          {" "} Not Harder
         </h1>
 
         <p
           className="max-w-2xl text-balance leading-normal text-muted-foreground sm:text-xl sm:leading-8"
           style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}
         >
-          Build your next project using Next.js 14, Prisma, Neon, Auth.js
-          v5, Resend, React Email, Shadcn/ui, Stripe.
+          Study smarter with our AI Study Plan and Flashcards
+          From boring books to personalized interactive content
         </p>
 
         <div

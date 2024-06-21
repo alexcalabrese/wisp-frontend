@@ -61,7 +61,7 @@ function SignInModal({
             disabled={signInClicked}
             onClick={() => {
               setSignInClicked(true);
-              signIn("github", { callbackUrl: "/profile" }, { redirect: false }).then(() =>
+              signIn("github", { callbackUrl: "/dashboard" }, { redirect: false }).then(() =>
                 setTimeout(() => {
                   setShowSignInModal(false);
                 }, 400),
