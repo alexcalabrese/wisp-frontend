@@ -13,6 +13,7 @@ export type MainNavItem = NavItem;
 
 export type SidebarNavItem = {
   title: string;
+  special?: boolean;
   disabled?: boolean;
   external?: boolean;
   icon?: keyof typeof Icons;

@@ -14,9 +14,16 @@ export const dashboardConfig: DashboardConfig = {
   ],
   sidebarNav: [
     {
+      title: "Study",
+      href: "/dashboard/study",
+      icon: "bookOpenText",
+      special: true,
+    },
+    {
       title: "Upload",
       href: "/dashboard/upload",
       icon: "upload",
+      special: false,
     },
     // {
     //   title: "Panel",
@@ -27,11 +34,13 @@ export const dashboardConfig: DashboardConfig = {
       title: "Billing",
       href: "/dashboard/billing",
       icon: "billing",
+      special: false,
     },
     {
       title: "Settings",
       href: "/dashboard/settings",
       icon: "settings",
+      special: false,
     },
   ],
 }
