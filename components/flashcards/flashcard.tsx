@@ -31,9 +31,9 @@ export function Flashcard({ question, answer }) {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>{question}</CardTitle>
-        {showAnswer && <CardDescription>{answer}</CardDescription>}
+      <CardHeader className="flex flex-col items-center">
+        <CardTitle className="text-2xl">{question}</CardTitle>
+        {showAnswer && <CardDescription className="text-lg">{answer}</CardDescription>}
       </CardHeader>
       <CardFooter className="flex justify-between border-t bg-accent py-2">
         {/* TODO: Add number of remaining flashcards */}
@@ -41,7 +41,7 @@ export function Flashcard({ question, answer }) {
             <span>Edit</span>
         </Button>
         
-        <div className="flex flex-col items-center w-full pt-2">
+        <div className="flex w-full flex-col items-center pt-2">
           {!showOptions && (
           <Button type="button" onClick={handleShowAnswer}>
             <span>Show Answer</span>
@@ -49,16 +49,16 @@ export function Flashcard({ question, answer }) {
           )}
           {showOptions && (
             <div className="flex flex-wrap justify-center gap-2">
-              <Button type="button" className="dark:text-red-500 text-red-300 font-semibold" onClick={() => handleOptionClick("Option 1")}>
+              <Button type="button" className="font-semibold text-red-300 dark:text-red-500" onClick={() => handleOptionClick("Option 1")}>
                 Again
               </Button>
-              <Button type="button" className="dark:text-orange-500 text-orange-300 font-semibold" onClick={() => handleOptionClick("Option 2")}>
+              <Button type="button" className="font-semibold text-orange-300 dark:text-orange-500" onClick={() => handleOptionClick("Option 2")}>
                 Hard
               </Button>
-              <Button type="button" className="dark:text-green-500 text-green-300 font-semibold" onClick={() => handleOptionClick("Option 3")}>
+              <Button type="button" className="font-semibold text-green-300 dark:text-green-500" onClick={() => handleOptionClick("Option 3")}>
                 Good
               </Button>
-              <Button type="button" className="dark:text-blue-500 text-blue-300 font-semibold" onClick={() => handleOptionClick("Option 4")}>
+              <Button type="button" className="font-semibold text-blue-300 dark:text-blue-500" onClick={() => handleOptionClick("Option 4")}>
                 Easy
               </Button>
             </div>

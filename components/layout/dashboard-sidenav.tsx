@@ -29,8 +29,8 @@ export function DashboardNav({ items }: DashboardNavProps) {
                 <Link key={index} href={item.disabled ? "/" : item.href}>
                   <span
                     className={cn(
-                      "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-muted hover:text-accent-foreground",
-                      "hover:bg-gradient-to-r hover:from-blue-700 hover:to-purple-700 bg-gradient-to-r from-blue-500 to-purple-500 font-semibold text-white hover:text-white",
+                      "group flex items-center rounded-md px-3 py-2 text-sm hover:bg-muted",
+                      "bg-gradient-to-r from-blue-500 to-purple-500 font-semibold text-white hover:bg-gradient-to-r hover:from-blue-700 hover:to-purple-700 hover:text-white",
                       path === item.href ? "bg-muted" : "transparent",
                     item.disabled && "cursor-not-allowed opacity-80",
                   )}
