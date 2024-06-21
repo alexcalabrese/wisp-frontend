@@ -81,7 +81,6 @@ const FileUploadDropzone = () => {
   const form = useForm<CardFormType>({
     resolver: zodResolver(CardForm),
     defaultValues: {
-      message: "",
       files: null,
     },
   });
