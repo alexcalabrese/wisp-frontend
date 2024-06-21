@@ -1,4 +1,5 @@
 import Google from "next-auth/providers/google"
+import GitHubProvider from "next-auth/providers/github"
 import { env } from "@/env.mjs"
 
 import type { NextAuthConfig } from "next-auth"
@@ -12,6 +13,10 @@ export default {
     Google({
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
+    }),
+    GitHubProvider({
+      clientId: env.GITHUB_CLIENT_ID,
+      clientSecret: env.GITHUB_CLIENT_SECRET,
     }),
     // Email({
     //   sendVerificationRequest: async ({ identifier, url, provider }) => {
