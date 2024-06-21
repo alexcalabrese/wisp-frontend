@@ -25,6 +25,7 @@ import {
   Trash,
   User,
   X,
+  Upload,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -105,4 +106,5 @@ export const Icons = {
   ),
   user: User,
   warning: AlertTriangle,
+  upload: Upload,
 };

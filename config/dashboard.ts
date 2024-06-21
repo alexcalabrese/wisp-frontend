@@ -14,10 +14,15 @@ export const dashboardConfig: DashboardConfig = {
   ],
   sidebarNav: [
     {
-      title: "Panel",
-      href: "/dashboard",
-      icon: "post",
+      title: "Upload",
+      href: "/dashboard/upload",
+      icon: "upload",
     },
+    // {
+    //   title: "Panel",
+    //   href: "/dashboard",
+    //   icon: "post",
+    // },
     {
       title: "Billing",
       href: "/dashboard/billing",
