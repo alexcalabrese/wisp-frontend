@@ -37,7 +37,7 @@ const FileSvgDraw = () => {
   return (
     <>
       <svg
-        className="w-8 h-8 mb-3 text-gray-500 dark:text-gray-400"
+        className="mb-3 size-8 text-gray-500 dark:text-gray-400"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -121,12 +121,12 @@ const FileUploadDropzone = () => {
                   onValueChange={field.onChange}
                   dropzoneOptions={dropzone}
                   reSelect={true}
-                  className="relative bg-background rounded-lg p-2"
+                  className="relative rounded-lg bg-background p-2"
                 >
                   <FileInput
                     className="outline-dashed outline-1 outline-white"
                   >
-                    <div className="flex items-center justify-center flex-col pt-3 pb-4 w-full ">
+                    <div className="flex w-full flex-col items-center justify-center pb-4 pt-3 ">
           <FileSvgDraw />
         </div>
                   </FileInput>
@@ -139,7 +139,7 @@ const FileUploadDropzone = () => {
                           aria-roledescription={`file ${i + 1} containing ${file.name
                             }`}
                         >
-                          <Paperclip className="h-4 w-4 stroke-current" />
+                          <Paperclip className="size-4 stroke-current" />
               <span>{file.name}</span>
                           {/* <AspectRatio className="size-full">
                             <Image
@@ -168,7 +168,7 @@ const FileUploadDropzone = () => {
           /> */}
         </div>
         {form.formState.errors && (
-          <div className="text-destructive text-sm">
+          <div className="text-sm text-destructive">
             {Object.values(form.formState.errors).map((error) => (
               <p key={error.message}>{error.message}</p>
             ))}
