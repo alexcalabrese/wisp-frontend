@@ -27,6 +27,8 @@ import {
   X,
   Upload,
   BookOpenText,
+  LibraryBig,
+  Space,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -109,4 +111,6 @@ export const Icons = {
   warning: AlertTriangle,
   upload: Upload,
   bookOpenText: BookOpenText,
+  libraryBig: LibraryBig,
+  space: Space,
 };

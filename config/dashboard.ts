@@ -20,6 +20,12 @@ export const dashboardConfig: DashboardConfig = {
       special: true,
     },
     {
+      title: "Collections",
+      href: "/dashboard/collections",
+      icon: "libraryBig",
+      special: false,
+    },
+    {
       title: "Upload",
       href: "/dashboard/upload",
       icon: "upload",

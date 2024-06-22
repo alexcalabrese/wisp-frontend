@@ -42,6 +42,9 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
             Copyright &copy; 2024. All rights reserved.
           </span> */}
           <p className="text-left text-sm text-muted-foreground">
+            Built with ❤️ from 🇮🇹
+          </p>
+          {/* <p className="text-left text-sm text-muted-foreground">
             Built by{" "}
             <Link
               href={siteConfig.links.twitter}
@@ -69,7 +72,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
             >
               Popsy
             </Link>
-          </p>
+          </p> */}
 
           <div className="flex items-center gap-3">
             <Link

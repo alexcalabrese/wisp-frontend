@@ -54,7 +54,7 @@ export const infos: InfoLdg[] = [
 
 export const features = [
   {
-    title: "Feature 1",
+    title: "Personalized study plan",
     description:
       "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
     link: "/",
@@ -91,6 +91,7 @@ export const features = [
 ];
 
 export const testimonials = [
+  /*
   {
     name: "John Doe",
     job: "Full Stack Developer",
@@ -140,4 +141,5 @@ export const testimonials = [
     review:
       "Thanks to next-saas-stripe-starter, I've been able to create modern and attractive user interfaces in record time. The starter kit provides a solid foundation for building sleek and intuitive designs, allowing me to focus more on the creative aspects of my work.",
   },
+   */
 ];
