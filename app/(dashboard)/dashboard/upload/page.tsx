@@ -1,27 +1,17 @@
 "use client";
 
-import {
-  FileUploader,
-  FileInput,
-  FileUploaderContent,
-  FileUploaderItem,
-} from "@/components/dashboard/file-uploader";
-
-import { DashboardHeader } from "@/components/dashboard/header";
-import { DashboardShell } from "@/components/dashboard/shell";
-import { DropzoneOptions } from "react-dropzone";
-import z from "zod";
+import Image from "next/image";
+import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { toast } from "sonner";
-import { Input } from "@/components/ui/input";
 import { Paperclip, Send } from "lucide-react";
+import { DropzoneOptions } from "react-dropzone";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import z from "zod";
+
 import { cn } from "@/lib/utils";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import Image from "next/image";
-
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -30,8 +20,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
-import Link from "next/link";
+import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import {
+  FileInput,
+  FileUploader,
+  FileUploaderContent,
+  FileUploaderItem,
+} from "@/components/dashboard/file-uploader";
+import { DashboardHeader } from "@/components/dashboard/header";
+import { DashboardShell } from "@/components/dashboard/shell";
 
 const FileSvgDraw = () => {
   return (
@@ -67,7 +65,7 @@ const CardForm = z.object({
     .array(
       z.instanceof(File).refine((file) => file.size < 4 * 1024 * 1024, {
         message: "File size must be less than 4MB",
-      })
+      }),
     )
     .max(5, {
       message: "Maximum 5 files are allowed",
@@ -99,48 +97,50 @@ const FileUploadDropzone = () => {
 
   return (
     <DashboardShell>
-      <DashboardHeader heading="Upload your files" text="Add your books or notes here." />
+      <DashboardHeader
+        heading="Upload your files"
+        text="Add your books or notes here."
+      />
       <Card>
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        // className="relative w-full grid gap-2 h-12 "
-      >
-        <div
-          // className={`w-full flex items-start gap-x-2 rounded-md outline outline-1 outline-border px-2 pb-1 ${form.watch("files") !== null ? "pt-4" : "pt-2"
-          //   }`}
-        >
-          <FormField
-            control={form.control}
-            name="files"
-            render={({ field }) => (
-              <FormItem>
-                <FileUploader
-                  value={field.value}
-                  onValueChange={field.onChange}
-                  dropzoneOptions={dropzone}
-                  reSelect={true}
-                  className="relative rounded-lg bg-background p-2"
-                >
-                  <FileInput
-                    className="outline-dashed outline-1 outline-white"
-                  >
-                    <div className="flex w-full flex-col items-center justify-center pb-4 pt-3 ">
-          <FileSvgDraw />
-        </div>
-                  </FileInput>
-                  {field.value && field.value.length > 0 && (
-                    <FileUploaderContent>
-                      {field.value.map((file, i) => (
-                        <FileUploaderItem
-                          key={i}
-                          index={i}
-                          aria-roledescription={`file ${i + 1} containing ${file.name
-                            }`}
-                        >
-                          <Paperclip className="size-4 stroke-current" />
-              <span>{file.name}</span>
-                          {/* <AspectRatio className="size-full">
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            // className="relative w-full grid gap-2 h-12 "
+          >
+            <div
+            // className={`w-full flex items-start gap-x-2 rounded-md outline outline-1 outline-border px-2 pb-1 ${form.watch("files") !== null ? "pt-4" : "pt-2"
+            //   }`}
+            >
+              <FormField
+                control={form.control}
+                name="files"
+                render={({ field }) => (
+                  <FormItem>
+                    <FileUploader
+                      value={field.value}
+                      onValueChange={field.onChange}
+                      dropzoneOptions={dropzone}
+                      reSelect={true}
+                      className="relative rounded-lg bg-background p-2"
+                    >
+                      <FileInput className="outline-dashed outline-1 outline-white">
+                        <div className="flex w-full flex-col items-center justify-center pb-4 pt-3">
+                          <FileSvgDraw />
+                        </div>
+                      </FileInput>
+                      {field.value && field.value.length > 0 && (
+                        <FileUploaderContent>
+                          {field.value.map((file, i) => (
+                            <FileUploaderItem
+                              key={i}
+                              index={i}
+                              aria-roledescription={`file ${i + 1} containing ${
+                                file.name
+                              }`}
+                            >
+                              <Paperclip className="size-4 stroke-current" />
+                              <span>{file.name}</span>
+                              {/* <AspectRatio className="size-full">
                             <Image
                               src={URL.createObjectURL(file)}
                               alt={file.name}
@@ -148,15 +148,15 @@ const FileUploadDropzone = () => {
                               fill
                             />
                           </AspectRatio> */}
-                        </FileUploaderItem>
-                      ))}
-                    </FileUploaderContent>
-                  )}
-                </FileUploader>
-              </FormItem>
-            )}
-          />
-          {/* <FormField
+                            </FileUploaderItem>
+                          ))}
+                        </FileUploaderContent>
+                      )}
+                    </FileUploader>
+                  </FormItem>
+                )}
+              />
+              {/* <FormField
             control={form.control}
             name="message"
             render={({ field }) => (
@@ -165,23 +165,22 @@ const FileUploadDropzone = () => {
               </FormItem>
             )}
           /> */}
-        </div>
-        {form.formState.errors && (
-          <div className="text-sm text-destructive">
-            {Object.values(form.formState.errors).map((error) => (
-              <p key={error.message}>{error.message}</p>
-            ))}
-          </div>
-        )}
-        <CardFooter className="flex flex-col items-center space-y-2 border-t bg-accent py-2 md:flex-row md:justify-between md:space-y-0">
-          <Button type="submit" className="h-8 w-fit">
-          Send
-        </Button>
-      </CardFooter>
-      </form>
-    </Form>
-    
-    </Card>
+            </div>
+            {form.formState.errors && (
+              <div className="text-sm text-destructive">
+                {Object.values(form.formState.errors).map((error) => (
+                  <p key={error.message}>{error.message}</p>
+                ))}
+              </div>
+            )}
+            <CardFooter className="flex flex-col items-center space-y-2 border-t bg-accent py-2 md:flex-row md:justify-between md:space-y-0">
+              <Button type="submit" className="h-8 w-fit">
+                Send
+              </Button>
+            </CardFooter>
+          </form>
+        </Form>
+      </Card>
     </DashboardShell>
   );
 };

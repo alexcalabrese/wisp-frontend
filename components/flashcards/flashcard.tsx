@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -16,6 +16,7 @@ import {
 export function Flashcard({ question, answer }) {
   const [showAnswer, setShowAnswer] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const handleShowAnswer = () => {
     setShowAnswer(true);
@@ -29,8 +30,23 @@ export function Flashcard({ question, answer }) {
 
   const handleEdit = () => console.log("Edit");
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.code === "Space") {
+      event.preventDefault();
+      handleShowAnswer();
+    }
+  };
+
+  useEffect(() => {
+    cardRef.current?.focus();
+  }, []);
+
   return (
-    <Card>
+    <Card
+      ref={cardRef}
+      tabIndex={-1} // Make the Card focusable
+      onKeyDown={handleKeyDown} // Attach the event to the Card
+    >
       <CardHeader className="flex flex-col items-center">
         <CardTitle className="text-2xl">{question}</CardTitle>
         {showAnswer && <CardDescription className="text-lg">{answer}</CardDescription>}
@@ -43,8 +59,11 @@ export function Flashcard({ question, answer }) {
         
         <div className="flex w-full flex-col items-center pt-2">
           {!showOptions && (
-          <Button type="button" onClick={handleShowAnswer}>
-            <span>Show Answer</span>
+            <Button type="button" onClick={handleShowAnswer}
+              onKeyDown={handleKeyDown} // Add this line
+              tabIndex={-1} // Ensure the button is focusable to receive keyboard events
+            >
+            <span>Show Answer </span>
           </Button>
           )}
           {showOptions && (
