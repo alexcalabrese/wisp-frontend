@@ -14,16 +14,16 @@ export const dashboardConfig: DashboardConfig = {
   ],
   sidebarNav: [
     {
-      title: "Study",
-      href: "/dashboard/study",
-      icon: "bookOpenText",
-      special: true,
-    },
-    {
       title: "Dashboard",
       href: "/dashboard",
       icon: "gauge",
       special: false,
+    },
+    {
+      title: "Study",
+      href: "/dashboard/study",
+      icon: "bookOpenText",
+      special: true,
     },
     {
       title: "Collections",
