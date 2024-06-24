@@ -1,4 +1,4 @@
-import { DashboardConfig } from "types"
+import { DashboardConfig } from "types";
 
 export const dashboardConfig: DashboardConfig = {
   mainNav: [
@@ -20,6 +20,12 @@ export const dashboardConfig: DashboardConfig = {
       special: true,
     },
     {
+      title: "Dashboard",
+      href: "/dashboard",
+      icon: "gauge",
+      special: false,
+    },
+    {
       title: "Collections",
       href: "/dashboard/collections",
       icon: "libraryBig",
@@ -31,11 +37,6 @@ export const dashboardConfig: DashboardConfig = {
       icon: "upload",
       special: false,
     },
-    // {
-    //   title: "Panel",
-    //   href: "/dashboard",
-    //   icon: "post",
-    // },
     {
       title: "Billing",
       href: "/dashboard/billing",
@@ -49,4 +50,4 @@ export const dashboardConfig: DashboardConfig = {
       special: false,
     },
   ],
-}
+};

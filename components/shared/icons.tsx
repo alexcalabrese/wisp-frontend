@@ -29,6 +29,7 @@ import {
   BookOpenText,
   LibraryBig,
   Space,
+  Gauge,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -113,4 +114,5 @@ export const Icons = {
   bookOpenText: BookOpenText,
   libraryBig: LibraryBig,
   space: Space,
+  gauge: Gauge,
 };
